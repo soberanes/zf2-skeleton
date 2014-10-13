@@ -1,0 +1,25 @@
+<?php
+$url = $this->basePath('pedidos');
+
+?>
+<?php if ($this->pageCount): ?>
+<center>
+    <ul class="pagination">
+        <li<?php echo (isset($this->previous)) ? '' : " class='active'"; ?>>
+            <a href="<?php echo $url.'/1'; ?>">Principio</a></li>
+        <li<?php echo (isset($this->previous)) ? '' : " class='active'"; ?>>
+            <a href="<?php echo $url.'/'.$this->previous; ?>">Anterior</a></li>
+      <?php foreach ($this->pagesInRange as $page): ?>  
+          <li<?php echo ($page != $this->current) ? '' : " class='active'"; ?>>
+              <a href="<?php echo $url.'/'.$page; ?>"><?php echo $page; ?></a>
+          </li>
+      <?php endforeach; ?>
+        <li<?php echo (isset($this->next)) ? '' : " class='active'"; ?>>
+            <a href="<?php echo $url.'/'.$this->next; ?>" 
+               title="Siguiente"> Siguiente</a></li>
+      <li<?php echo (isset($this->next)) ? '' : " class='active'"; ?>>
+          <a href="<?php echo $url.'/'.$this->pageCount; ?>"  
+             title="Fin"> Ultimo</a></li>
+    </ul>
+</center>
+<?php endif; ?>
