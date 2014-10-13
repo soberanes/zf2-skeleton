@@ -24,66 +24,25 @@ class Getnavbar extends DefaultNavigationFactory {
                 array(
                     'label' => 'Inicio',
                     'route' => 'home',
+                ),
+                array(
+                    'label'=>'Mecánica',
+                    'route'=>'mecanica',
                     'pages'=>array(
                         array(
-                            'label'=>'Mecánica',
-                            'route'=>'mecanica',
-                            'pages'=>array(
-                                array(
-                                    'label'=>'Mecánica ADPRESS',
-                                    'route'=>'mecanica'
-                                ),
-                                array(
-                                    'label'=>'Promociones',
-                                    'route'=>'promociones'
-                                ),
-                                array(
-                                    'label'=>'Descarga de APPS',
-                                    'route'=>'apps'
-                                ),
-                            )
+                            'label'=>'Mecánica ADPRESS',
+                            'route'=>'mecanica'
                         ),
                         array(
-                            'label'=>'Activa tu cuenta',
-                            'route'=>'cshelperzfcuser/activate'
+                            'label'=>'Promociones',
+                            'route'=>'promociones'
                         ),
                         array(
-                            'label'=>'Mi Perfil',
-                            'route'=>'cshelperzfcuser/miperfil'
+                            'label'=>'Descarga de APPS',
+                            'route'=>'apps'
                         ),
-                        array(
-                            'label'=>'Catálogos',
-                            'route'=>'Cscategorycmf\Controller\Index'
-                        ),
-                        array(
-                            'label'=>'Carrito',
-                            'route'=>'cscart_controller_index'
-                        ),
-                        array(
-                            'label'=>'Estado de Cuenta',
-                            'route'=>'micuenta',
-                            'pages'=>array(
-                                array(
-                                    'label'=>'Mi Cuenta',
-                                    'route'=>'micuenta'
-                                ),
-                                array(
-                                    'label'=>'Historial de Pedidos',
-                                    'route'=>'pedidos'
-                                ),
-                            ),
-                        ),
-                        array(
-                            'label'=>'Ayuda',
-                            'route'=>'ayuda'
-                        ),
-                        array(
-                            'label'=>'Aviso de Privacidad',
-                            'route'=>'aviso'
-                        ),
-                    ),
-                ),
-                
+                    )
+                ),                
             );
           
             if (!isset($configuration['navigation'])) {
@@ -100,7 +59,10 @@ class Getnavbar extends DefaultNavigationFactory {
             $routeMatch  = $application->getMvcEvent()->getRouteMatch();
             $router      = $application->getMvcEvent()->getRouter();
             $pages       = $this->getPagesFromConfig($configuration['navigation'][$this->getName()]);
- 
+            
+            // echo "<pre>";
+            // var_dump($pages);die;
+
             $this->pages = $this->injectComponents($pages, $routeMatch, $router);
         }
         return $this->pages;

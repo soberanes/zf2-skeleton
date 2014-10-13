@@ -128,7 +128,9 @@ return array(
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
-        ),        
+        ),
+        'factories' => array(
+        ),
     ),
     'translator' => array(
         'locale' => 'en_US',

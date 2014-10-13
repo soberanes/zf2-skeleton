@@ -110,7 +110,10 @@
                     </ul>
                     <div class="navbar-default sidebar" role="navigation">
                         <div class="sidebar-nav navbar-collapse">
-                            
+                            <?= $this->navigation('navigation')
+                                    ->menu()
+                                    ->setPartial('partials/menu')->render();
+                            ?>
                         </div>
                     </div>
                 </nav>
