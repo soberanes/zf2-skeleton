@@ -38,24 +38,13 @@ return array(
         ),
     ),
     'db' => array(
-                'driver' => 'Pdo',
-                'dsn' => 'mysql:dbname=shopsimple_cscore;hostname=localhost',
-                'username' => 'root',
-                'password' => '',
-                'driver_options' => array(
-                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-                ), 
-                'adapters' => array(
-                    'db1' => array(
-                       'driver' => 'Pdo',
-                       'dsn' => 'mysql:dbname=shopsimple_mecanic;host=localhost',
-                       'username' => 'root',
-                        'password' => '',
-                       'driver_options'  => array(
-                            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-                        ),
-                    ),                    
-                ),    
-            ),
+        'driver' => 'Pdo',
+		'dsn' => 'mysql:dbname=skeleton;hostname=localhost',
+		'username' => 'root',
+    	'password' => 'root',
+        'driver_options' => array(
+        	PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+     	), 
+     ),
 
 );

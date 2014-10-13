@@ -1,11 +1,9 @@
-CookieShopAdPress v2.0-beta1
+ZF2 Skeleton Application v1.0
 =======================
 
 Introducción
 ------------
-Se trata de una aplicación, esqueleto con la capa MVC ZF2. 
-Esta aplicación le permite gestionar tiendas en línea.
-Bajo el esquema de puntos
+Aplicación esqueleto con la capa MVC ZF2.
 
 Dependencias
 ------------
@@ -15,7 +13,7 @@ Dependencias
 
 Instalación Automatica.
 -----------------------
-proximamente
+próximamente
 
 Instalación Manual.
 -----------------------
@@ -24,16 +22,13 @@ Instalación Manual.
 
 ###### Via shell https:
 
-    git clone https://github.com/CookieShop/Shopsimple.git
+    git clone https://github.com/soberanes/zf2-skeleton.git
 
 ###### Via shell ssh:
-    git clone git@github.com:CookieShop/Shopsimple.git
+    git clone git@github.com:soberanes/zf2-skeleton.git
 
 ###### Via Descarga Directa (zip):
- [v2.0-beta1](https://github.com/CookieShop/Shopsimple/archive/v2.0-beta1.zip "v2.0-beta1")
-
-###### Via Descarga Directa (tar.gz):
- [v2.0-beta1](https://github.com/CookieShop/Shopsimple/archive/v2.0-beta1.tar.gz "v2.0-beta1")
+ [v1.0] https://github.com/soberanes/zf2-skeleton/archive/master.zip
 
 2.instalar el repositorio en carpeta raiz del Servidor Web
 

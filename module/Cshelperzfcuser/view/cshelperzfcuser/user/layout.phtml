@@ -19,19 +19,7 @@
                                       ->prependFile($this->basePath() . '/assets/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))  
                                       ->prependFile($this->basePath() . '/assets/js/jquery.steps.js')
                                       ->prependFile($this->basePath() . '/assets/js/jquery.js') ?>
-      <style> 
-          @font-face
-            {
-                font-family: "bebasneue";
-                src: url("<?php echo $this->basePath()?>/assets/fonts/BebasNeue.otf") format("opentype");
-                src: url("<?php echo $this->basePath()?>/assets/fonts/BebasNeue.eot?#bebasneue") format("embedded-opentype"),
-                    url("<?php echo $this->basePath()?>/assets/fonts/BebasNeue.woff") format("woff"),
-                    url("<?php echo $this->basePath()?>/assets/fonts/BebasNeue.ttf") format("truetype");
-            }
-        
-      </style>        
-
-    </head>
+    	</head>
     <body class="headeri">
 
   <?php echo $this->content; ?>      
