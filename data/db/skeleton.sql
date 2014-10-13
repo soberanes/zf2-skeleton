@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.1
+-- version 4.2.9
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jan 06, 2014 at 06:44 
--- Server version: 5.5.8
--- PHP Version: 5.3.5
+-- Servidor: localhost
+-- Tiempo de generación: 13-10-2014 a las 18:15:03
+-- Versión del servidor: 5.5.39-MariaDB
+-- Versión de PHP: 5.5.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,35 +17,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `shopsimple_cscore`
+-- Base de datos: `skeleton`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Estructura de tabla para la tabla `cart`
 --
 
 CREATE TABLE IF NOT EXISTS `cart` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
   `quantity` int(10) unsigned NOT NULL,
   `price` float(20,5) unsigned NOT NULL,
   `fees` float(20,5) unsigned NOT NULL DEFAULT '0.00000',
-  `line_total` float(20,5) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`,`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
+  `line_total` float(20,5) unsigned NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Estructura de tabla para la tabla `category`
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `id_parent` int(10) unsigned NOT NULL,
   `name` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
   `description` text COLLATE utf8_spanish2_ci NOT NULL,
@@ -53,12 +51,11 @@ CREATE TABLE IF NOT EXISTS `category` (
   `full_img` varchar(125) COLLATE utf8_spanish2_ci NOT NULL,
   `last_update` int(10) unsigned NOT NULL,
   `category_order` int(10) unsigned NOT NULL,
-  `category_status` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=7 ;
+  `category_status` int(10) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `category`
+-- Volcado de datos para la tabla `category`
 --
 
 INSERT INTO `category` (`id`, `id_parent`, `name`, `description`, `thumb_img`, `full_img`, `last_update`, `category_order`, `category_status`) VALUES
@@ -72,19 +69,18 @@ INSERT INTO `category` (`id`, `id_parent`, `name`, `description`, `thumb_img`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `credits`
+-- Estructura de tabla para la tabla `credits`
 --
 
 CREATE TABLE IF NOT EXISTS `credits` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `credit` int(10) unsigned NOT NULL,
-  `last_update` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2 ;
+  `last_update` int(10) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `credits`
+-- Volcado de datos para la tabla `credits`
 --
 
 INSERT INTO `credits` (`id`, `user_id`, `credit`, `last_update`) VALUES
@@ -93,20 +89,19 @@ INSERT INTO `credits` (`id`, `user_id`, `credit`, `last_update`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `credits_history`
+-- Estructura de tabla para la tabla `credits_history`
 --
 
 CREATE TABLE IF NOT EXISTS `credits_history` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `id_period` int(10) unsigned NOT NULL,
   `id_username` int(10) unsigned NOT NULL,
   `credits` int(10) unsigned NOT NULL,
-  `payments` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=5 ;
+  `payments` int(10) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `credits_history`
+-- Volcado de datos para la tabla `credits_history`
 --
 
 INSERT INTO `credits_history` (`id`, `id_period`, `id_username`, `credits`, `payments`) VALUES
@@ -118,19 +113,18 @@ INSERT INTO `credits_history` (`id`, `id_period`, `id_username`, `credits`, `pay
 -- --------------------------------------------------------
 
 --
--- Table structure for table `credits_periods`
+-- Estructura de tabla para la tabla `credits_periods`
 --
 
 CREATE TABLE IF NOT EXISTS `credits_periods` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `name` varchar(60) COLLATE utf8_spanish2_ci NOT NULL,
   `from_date` int(10) unsigned NOT NULL,
-  `to_date` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=13 ;
+  `to_date` int(10) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `credits_periods`
+-- Volcado de datos para la tabla `credits_periods`
 --
 
 INSERT INTO `credits_periods` (`id`, `name`, `from_date`, `to_date`) VALUES
@@ -150,22 +144,21 @@ INSERT INTO `credits_periods` (`id`, `name`, `from_date`, `to_date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_check`
+-- Estructura de tabla para la tabla `order_check`
 --
 
 CREATE TABLE IF NOT EXISTS `order_check` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `id_security` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `total` float(20,5) unsigned NOT NULL,
   `order_date` int(10) unsigned NOT NULL,
   `ip` int(10) unsigned NOT NULL,
-  `order_status` tinyint(3) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
+  `order_status` tinyint(3) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `order_check`
+-- Volcado de datos para la tabla `order_check`
 --
 
 INSERT INTO `order_check` (`id`, `id_security`, `user_id`, `total`, `order_date`, `ip`, `order_status`) VALUES
@@ -175,21 +168,19 @@ INSERT INTO `order_check` (`id`, `id_security`, `user_id`, `total`, `order_date`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_history`
+-- Estructura de tabla para la tabla `order_history`
 --
 
 CREATE TABLE IF NOT EXISTS `order_history` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `order_id` int(10) unsigned NOT NULL,
   `order_status` int(10) unsigned NOT NULL,
   `order_date` int(10) unsigned NOT NULL,
-  `ip` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `order_id` (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
+  `ip` int(10) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `order_history`
+-- Volcado de datos para la tabla `order_history`
 --
 
 INSERT INTO `order_history` (`id`, `order_id`, `order_status`, `order_date`, `ip`) VALUES
@@ -199,24 +190,21 @@ INSERT INTO `order_history` (`id`, `order_id`, `order_status`, `order_date`, `ip
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_item`
+-- Estructura de tabla para la tabla `order_item`
 --
 
 CREATE TABLE IF NOT EXISTS `order_item` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `order_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
   `quantity` int(10) unsigned NOT NULL,
   `price` float(20,5) unsigned NOT NULL,
   `fees` float(20,5) unsigned NOT NULL,
-  `line_total` float(20,5) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `order_id` (`order_id`),
-  KEY `product_id` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
+  `line_total` float(20,5) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `order_item`
+-- Volcado de datos para la tabla `order_item`
 --
 
 INSERT INTO `order_item` (`id`, `order_id`, `product_id`, `quantity`, `price`, `fees`, `line_total`) VALUES
@@ -226,18 +214,17 @@ INSERT INTO `order_item` (`id`, `order_id`, `product_id`, `quantity`, `price`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_status`
+-- Estructura de tabla para la tabla `order_status`
 --
 
 CREATE TABLE IF NOT EXISTS `order_status` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `name_status` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
-  `description` text COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=5 ;
+  `description` text COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `order_status`
+-- Volcado de datos para la tabla `order_status`
 --
 
 INSERT INTO `order_status` (`id`, `name_status`, `description`) VALUES
@@ -249,23 +236,19 @@ INSERT INTO `order_status` (`id`, `name_status`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment`
+-- Estructura de tabla para la tabla `payment`
 --
 
 CREATE TABLE IF NOT EXISTS `payment` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `method_id` int(10) unsigned NOT NULL,
   `order_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
-  `total` float(20,5) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `method_id` (`method_id`),
-  KEY `order_id` (`order_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
+  `total` float(20,5) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `payment`
+-- Volcado de datos para la tabla `payment`
 --
 
 INSERT INTO `payment` (`id`, `method_id`, `order_id`, `user_id`, `total`) VALUES
@@ -275,17 +258,16 @@ INSERT INTO `payment` (`id`, `method_id`, `order_id`, `user_id`, `total`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment_method`
+-- Estructura de tabla para la tabla `payment_method`
 --
 
 CREATE TABLE IF NOT EXISTS `payment_method` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2 ;
+`id` int(10) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `payment_method`
+-- Volcado de datos para la tabla `payment_method`
 --
 
 INSERT INTO `payment_method` (`id`, `name`) VALUES
@@ -294,19 +276,18 @@ INSERT INTO `payment_method` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permissions`
+-- Estructura de tabla para la tabla `permissions`
 --
 
 CREATE TABLE IF NOT EXISTS `permissions` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(11) unsigned NOT NULL,
   `id_role` int(11) NOT NULL,
   `id_resource` int(11) NOT NULL,
-  `permission` enum('allow','deny') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+  `permission` enum('allow','deny') NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `permissions`
+-- Volcado de datos para la tabla `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `id_role`, `id_resource`, `permission`) VALUES
@@ -348,23 +329,22 @@ INSERT INTO `permissions` (`id`, `id_role`, `id_resource`, `permission`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Estructura de tabla para la tabla `product`
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `sku` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
   `other_sku` varchar(125) COLLATE utf8_spanish2_ci NOT NULL,
   `description` text COLLATE utf8_spanish2_ci NOT NULL,
   `thumb_image` varchar(125) COLLATE utf8_spanish2_ci NOT NULL,
   `full_image` varchar(125) COLLATE utf8_spanish2_ci NOT NULL,
   `last_update` int(10) unsigned DEFAULT '0',
-  `product_status` tinyint(3) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=73 ;
+  `product_status` tinyint(3) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `product`
+-- Volcado de datos para la tabla `product`
 --
 
 INSERT INTO `product` (`id`, `sku`, `other_sku`, `description`, `thumb_image`, `full_image`, `last_update`, `product_status`) VALUES
@@ -444,20 +424,17 @@ INSERT INTO `product` (`id`, `sku`, `other_sku`, `description`, `thumb_image`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_category`
+-- Estructura de tabla para la tabla `product_category`
 --
 
 CREATE TABLE IF NOT EXISTS `product_category` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `category_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `product_id` (`product_id`),
-  KEY `category_id` (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=73 ;
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `product_category`
+-- Volcado de datos para la tabla `product_category`
 --
 
 INSERT INTO `product_category` (`id`, `category_id`, `product_id`) VALUES
@@ -537,21 +514,19 @@ INSERT INTO `product_category` (`id`, `category_id`, `product_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_price`
+-- Estructura de tabla para la tabla `product_price`
 --
 
 CREATE TABLE IF NOT EXISTS `product_price` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
   `price` float(20,5) unsigned NOT NULL,
   `currency` varchar(125) COLLATE utf8_spanish2_ci NOT NULL,
-  `last_update` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `product_id` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=73 ;
+  `last_update` int(10) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `product_price`
+-- Volcado de datos para la tabla `product_price`
 --
 
 INSERT INTO `product_price` (`id`, `product_id`, `price`, `currency`, `last_update`) VALUES
@@ -631,21 +606,20 @@ INSERT INTO `product_price` (`id`, `product_id`, `price`, `currency`, `last_upda
 -- --------------------------------------------------------
 
 --
--- Table structure for table `resource`
+-- Estructura de tabla para la tabla `resource`
 --
 
 CREATE TABLE IF NOT EXISTS `resource` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `id_parent` int(11) NOT NULL,
   `id_type` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `resource` varchar(125) NOT NULL,
-  `descripcion` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+  `descripcion` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `resource`
+-- Volcado de datos para la tabla `resource`
 --
 
 INSERT INTO `resource` (`id`, `id_parent`, `id_type`, `nombre`, `resource`, `descripcion`) VALUES
@@ -689,18 +663,17 @@ INSERT INTO `resource` (`id`, `id_parent`, `id_type`, `nombre`, `resource`, `des
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Estructura de tabla para la tabla `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `role` varchar(40) NOT NULL,
-  `id_parent` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `id_parent` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `roles`
+-- Volcado de datos para la tabla `roles`
 --
 
 INSERT INTO `roles` (`id`, `role`, `id_parent`) VALUES
@@ -711,27 +684,232 @@ INSERT INTO `roles` (`id`, `role`, `id_parent`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Estructura de tabla para la tabla `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`user_id` int(10) unsigned NOT NULL,
   `username` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `display_name` varchar(50) DEFAULT NULL,
   `password` varchar(128) NOT NULL,
   `state` smallint(5) unsigned DEFAULT NULL,
-  `gid` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `gid` int(10) unsigned DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `display_name`, `password`, `state`, `gid`) VALUES
+INSERT INTO `user` (`user_id`, `username`, `email`, `display_name`, `password`, `state`, `gid`) VALUES
 (1, 'admin', 'desarrolladorpc@logolinemail.com.mx', 'Eduardo', '$2a$08$F8Rxo0h71Qh6Z105ZYO6F.o16dvUZEA9LoX5DJ2yCJ3XIn8hxRhuu', 1, 1);
 
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cart`
+--
+ALTER TABLE `cart`
+ ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`,`product_id`);
+
+--
+-- Indices de la tabla `category`
+--
+ALTER TABLE `category`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `credits`
+--
+ALTER TABLE `credits`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `credits_history`
+--
+ALTER TABLE `credits_history`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `credits_periods`
+--
+ALTER TABLE `credits_periods`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `order_check`
+--
+ALTER TABLE `order_check`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `order_history`
+--
+ALTER TABLE `order_history`
+ ADD PRIMARY KEY (`id`), ADD KEY `order_id` (`order_id`);
+
+--
+-- Indices de la tabla `order_item`
+--
+ALTER TABLE `order_item`
+ ADD PRIMARY KEY (`id`), ADD KEY `order_id` (`order_id`), ADD KEY `product_id` (`product_id`);
+
+--
+-- Indices de la tabla `order_status`
+--
+ALTER TABLE `order_status`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `payment`
+--
+ALTER TABLE `payment`
+ ADD PRIMARY KEY (`id`), ADD KEY `method_id` (`method_id`), ADD KEY `order_id` (`order_id`), ADD KEY `user_id` (`user_id`);
+
+--
+-- Indices de la tabla `payment_method`
+--
+ALTER TABLE `payment_method`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `permissions`
+--
+ALTER TABLE `permissions`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `product`
+--
+ALTER TABLE `product`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `product_category`
+--
+ALTER TABLE `product_category`
+ ADD PRIMARY KEY (`id`), ADD KEY `product_id` (`product_id`), ADD KEY `category_id` (`category_id`);
+
+--
+-- Indices de la tabla `product_price`
+--
+ALTER TABLE `product_price`
+ ADD PRIMARY KEY (`id`), ADD KEY `product_id` (`product_id`);
+
+--
+-- Indices de la tabla `resource`
+--
+ALTER TABLE `resource`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cart`
+--
+ALTER TABLE `cart`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `category`
+--
+ALTER TABLE `category`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `credits`
+--
+ALTER TABLE `credits`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `credits_history`
+--
+ALTER TABLE `credits_history`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `credits_periods`
+--
+ALTER TABLE `credits_periods`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT de la tabla `order_check`
+--
+ALTER TABLE `order_check`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `order_history`
+--
+ALTER TABLE `order_history`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `order_item`
+--
+ALTER TABLE `order_item`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `order_status`
+--
+ALTER TABLE `order_status`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `payment`
+--
+ALTER TABLE `payment`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `payment_method`
+--
+ALTER TABLE `payment_method`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `permissions`
+--
+ALTER TABLE `permissions`
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT de la tabla `product`
+--
+ALTER TABLE `product`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
+--
+-- AUTO_INCREMENT de la tabla `product_category`
+--
+ALTER TABLE `product_category`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
+--
+-- AUTO_INCREMENT de la tabla `product_price`
+--
+ALTER TABLE `product_price`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
+--
+-- AUTO_INCREMENT de la tabla `resource`
+--
+ALTER TABLE `resource`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `user`
+--
+ALTER TABLE `user`
+MODIFY `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
