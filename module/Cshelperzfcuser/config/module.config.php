@@ -19,7 +19,7 @@ return array(
                 'type' => 'Literal',
                 'priority' => 1000,
                 'options' => array(
-                    'route' => '/usuarios',
+                    'route' => '/users',
                     'defaults' => array(
                         'controller' => 'cshelperzfcuser',
                         'action'     => 'index',

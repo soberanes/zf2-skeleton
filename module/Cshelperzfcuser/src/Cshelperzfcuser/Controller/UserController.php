@@ -87,7 +87,7 @@ class UserController extends AbstractActionController
         }
         if (!$request->isPost()) {
             return array(
-                'loginForm' => $form,
+                'form' => $form,
                 'redirect'  => $redirect,
                 'enableRegistration' => $this->getOptions()->getEnableRegistration(),
             );
